@@ -1,5 +1,5 @@
 import uvicorn
-
+import os
 
 host = "0.0.0.0"
 # read port from environment variable
