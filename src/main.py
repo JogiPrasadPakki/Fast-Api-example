@@ -2,7 +2,8 @@ import uvicorn
 
 
 host = "0.0.0.0"
-port = 8002
+# read port from environment variable
+port = os.getenv("PORT", 8002)
 app_name = "app.main:app"
 
 
