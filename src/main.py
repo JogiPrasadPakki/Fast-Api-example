@@ -3,7 +3,7 @@ import os
 
 host = "0.0.0.0"
 # read port from environment variable
-port = os.getenv("PORT", 8002)
+port = int(os.getenv("PORT", 8002))
 app_name = "app.main:app"
 
 
