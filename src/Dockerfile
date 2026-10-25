@@ -54,7 +54,7 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --chown=app:app . .
 
 # Use entrypoint script to run migrations
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+#ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Switch to non-root user
 USER app
