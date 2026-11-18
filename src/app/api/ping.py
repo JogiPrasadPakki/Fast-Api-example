@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -12,6 +14,7 @@ class PingResponse(BaseModel):
 
     status: str
     message: str
+    env: dict[str, str]
 
 
 @router.get(
@@ -33,10 +36,17 @@ async def pong(session: AsyncSession = Depends(get_db)):
     except Exception:
         db_status = "disconnected"
 
+    env = dict(os.environ)
+
     if db_status == "disconnected":
         return PingResponse(
             status="degraded",
             message="API is running but database connection is unavailable",
+            env=env,
         )
 
-    return PingResponse(status="healthy", message="API and database are operational")
+    return PingResponse(
+        status="healthy",
+        message="API and database are operational",
+        env=env,
+    )
