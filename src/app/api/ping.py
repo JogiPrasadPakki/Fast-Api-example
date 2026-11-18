@@ -9,6 +9,7 @@ from app.db import get_db
 router = APIRouter()
 
 
+
 class PingResponse(BaseModel):
     """Ping response schema"""
 
